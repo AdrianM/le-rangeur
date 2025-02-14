@@ -14,6 +14,9 @@ export default async function Home() {
           <PlayerList initialPlayers={players} />
         </Suspense>
       </div>
+      <div className="text-center text-xs text-gray-500 mt-8">
+        © 2025 <a href="https://github.com/AdrianM" className="hover:text-gray-700 underline" target="_blank" rel="noopener noreferrer">Adrian M</a>
+      </div>
     </main>
   );
 }
