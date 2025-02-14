@@ -1,0 +1,42 @@
+import { Player } from '../../lib/definitions';
+
+export function Table({ 
+  players 
+}: { 
+  players: Player[] 
+}) {
+  return (
+    <div className="bg-white rounded-lg shadow overflow-hidden">
+      <table className="min-w-full divide-y divide-gray-200">
+        <thead className="bg-gray-50">
+          <tr>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Rang
+            </th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Spielername
+            </th>
+          </tr>
+        </thead>
+        <tbody className="bg-white divide-y divide-gray-200">
+          {players.map((player) => (
+            <tr key={player.playerName} className="hover:bg-gray-50">
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                {player.rankingNr}
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                {player.playerName}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      
+      {players.length === 0 && (
+        <div className="text-center py-8 text-gray-500">
+          No players found matching your filter.
+        </div>
+      )}
+    </div>
+  );
+}
