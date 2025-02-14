@@ -1,5 +1,4 @@
-# le-rangeur
-Le Rangeur (IC Rankings zusammenstellen)
+# Le Rangeur
 
 Bei Interclub-Spielen müssen die Herreneinzel in der korrekten Reihenfolge der Spieler-Rankings gespielt werden. Die Rankings werden jeden Dienstag angepasst. Mit dieser Applikation kann für einen IC-Match das Ranking zusammengestellt werden. 
 
