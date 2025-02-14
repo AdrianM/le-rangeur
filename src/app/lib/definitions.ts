@@ -1,4 +1,5 @@
 export interface Player {
     playerName: string;
-    rankingNr: number;    
+    rankingNr: number;  
+    updatedAt: Date;
   }

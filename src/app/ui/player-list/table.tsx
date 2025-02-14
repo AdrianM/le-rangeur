@@ -5,6 +5,19 @@ export function Table({
 }: { 
   players: Player[] 
 }) {
+  const lastUpdate = players.length > 0 ? players[0].updatedAt : null;
+  
+  const formatDate = (date: Date) => {
+    return date.toLocaleString('de-CH', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    });
+  };
+
   return (
     <div className="bg-white rounded-lg shadow overflow-hidden">
       <table className="min-w-full divide-y divide-gray-200">
@@ -31,10 +44,16 @@ export function Table({
           ))}
         </tbody>
       </table>
-      
+
       {players.length === 0 && (
         <div className="text-center py-8 text-gray-500">
           No players found matching your filter.
+        </div>
+      )}
+
+      {lastUpdate && (
+        <div className="text-xs text-gray-500 p-4 border-t">
+          Aktualisiert: {formatDate(lastUpdate)}
         </div>
       )}
     </div>
