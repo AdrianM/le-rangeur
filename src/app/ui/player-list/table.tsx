@@ -47,13 +47,13 @@ export function Table({
 
       {players.length === 0 && (
         <div className="text-center py-8 text-gray-500">
-          No players found matching your filter.
+          Keine Spieler gefunden
         </div>
       )}
 
       {lastUpdate && (
         <div className="text-xs text-gray-500 p-4 border-t">
-          Aktualisiert: {formatDate(lastUpdate)}
+          Aktualisiert: {formatDate(lastUpdate)}, Quelle: <a href="https://www.swiss-badminton.ch/ranking/category.aspx?rid=209&category=2792&C2792FTYAF=0&C2792FTYAT=0&C2792FOG_3_F2048=79371&C2792RFN=&p=1&ps=100" target="_blank" rel="noopener noreferrer">Swiss-Badminton.ch</a>
         </div>
       )}
     </div>
