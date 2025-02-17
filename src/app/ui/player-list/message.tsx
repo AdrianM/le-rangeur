@@ -27,7 +27,7 @@ export function Message({
         {players.map((player, index) => (
           <div 
             key={player.playerName}
-            className="text-gray-600 hover:bg-gray-50 p-2 rounded"
+            className="text-gray-600 hover:bg-gray-50 p-0 rounded"
           >
             {index + 1}. {player.playerName} ({player.rankingNr})
           </div>
