@@ -54,19 +54,19 @@ export function Table({
       
 
       <div className="text-xs text-gray-500 p-4 border-t">
-        Quelle:{" "}
-        <a
-          href="https://www.swiss-badminton.ch/ranking/category.aspx?rid=209&category=2792&C2792FTYAF=0&C2792FTYAT=0&C2792FOG_3_F2048=79371&C2792RFN=&p=1&ps=100"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Swiss-Badminton.ch
-        </a> &nbsp;&nbsp;
+        
+       
         {lastUpdate && (
-        <span>
+        <span className="font-semibold text-gray-900">
           Aktualisiert: {formatDate(lastUpdate)}
         </span>
-      )}
+      )}&nbsp;&nbsp; Quelle:{" "}<a
+      href="https://www.swiss-badminton.ch/ranking/category.aspx?rid=209&category=2792&C2792FTYAF=0&C2792FTYAT=0&C2792FOG_3_F2048=79371&C2792RFN=&p=1&ps=100"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Swiss-Badminton.ch
+    </a> 
       </div>
     </div>
   );
