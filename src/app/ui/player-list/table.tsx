@@ -1,3 +1,4 @@
+import { formatDate } from '../../lib/date-utils';
 import { Player } from '../../lib/definitions';
 
 export function Table({ 
@@ -7,16 +8,7 @@ export function Table({
 }) {
   const lastUpdate = players.length > 0 ? players[0].updatedAt : null;
   
-  const formatDate = (date: Date) => {
-    return date.toLocaleString('de-CH', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: false
-    });
-  };
+
 
   return (
     <div className="bg-white rounded-lg shadow overflow-hidden">
