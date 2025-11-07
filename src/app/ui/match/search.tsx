@@ -3,7 +3,8 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { Match, TeamPlayer } from "../../lib/definitions";
 import { bcb3Team } from "../../lib/interclub/teams";
-import Select, { MultiValue } from "react-select";
+import CreatableSelect from "react-select/creatable";
+import type { MultiValue } from "react-select";
 import makeAnimated from "react-select/animated";
 
 export function Search({ onSearch }: { onSearch: (match: Match) => void }) {
@@ -37,14 +38,26 @@ export function Search({ onSearch }: { onSearch: (match: Match) => void }) {
     label: player.firstname,
   }));
 
-  const handlePlayersSelect = (selectedOptions: MultiValue<unknown>) => {
-    const selectedPlayers = selectedOptions as {
+  const handlePlayersSelect = (
+    selectedOptions: MultiValue<{
       value: string;
       label: string;
-    }[];
-    const players = selectedPlayers.map((selectedOption) =>
-      allPlayers.find((player) => player.firstname === selectedOption.value)
-    ) as TeamPlayer[];
+    }>
+  ) => {
+    const players: TeamPlayer[] = (selectedOptions || []).map(
+      (selectedOption) => {
+        const existing = allPlayers.find(
+          (player) => player.firstname === selectedOption.value
+        );
+        if (existing) {
+          return existing;
+        } else {
+          // for newly created players, assume gender F, since our team is mostly short on female players.
+          const newPlayer: TeamPlayer = { firstname: selectedOption.value, gender: "F" };
+          return newPlayer;
+        }
+      }
+    );
     setSelectedPlayers(players);
     onSearch({ ...buildMatch(), players });
   };
@@ -72,7 +85,7 @@ export function Search({ onSearch }: { onSearch: (match: Match) => void }) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-600">
           {isMounted && (
-            <Select
+            <CreatableSelect<{ value: string; label: string }, true>
               options={options}
               isMulti
               closeMenuOnSelect={false}
