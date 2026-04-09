@@ -21,7 +21,7 @@ export default async function RankingPage() {
         </Suspense>
       </div>
       <div className="text-center text-xs text-gray-500 mt-8">
-        © 2025 <a href="https://github.com/AdrianM" className="hover:text-gray-700 underline" target="_blank" rel="noopener noreferrer">Adrian M</a>&nbsp;&nbsp;<Link href="/match" className="hover:text-gray-700 underline">Zum Match (experimental)</Link>
+        © 2025 <a href="https://github.com/AdrianM" className="hover:text-gray-700 underline" target="_blank" rel="noopener noreferrer">Adrian M</a>&nbsp;&nbsp;<Link href="/match" className="hover:text-gray-700 underline">Zum Match (experimental)</Link> v1.0
       </div>
     </main>
   );
