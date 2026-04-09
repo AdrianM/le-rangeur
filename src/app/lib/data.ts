@@ -13,12 +13,13 @@ export async function fetchPlayers(): Promise<Player[]> {
       headers: {
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-        'Cookie': sessionCookie
+        'Cookie': sessionCookie,
+        // Hint intermediaries not to hand us a stale HTML snapshot (Swiss site may send cache headers).
+        'Cache-Control': 'no-cache',
       },
-      credentials: 'include',
-      next: {
-        revalidate: 1200 // 20 minutes
-      }
+      // Bypass Next.js Data Cache so each request hits the origin ranking page (avoids week-old ISR payloads).
+      // For less load on swiss-badminton.ch, switch to: next: { revalidate: 600 } (and drop cache).
+      cache: 'no-store',
     });
 
     

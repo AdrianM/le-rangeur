@@ -1,11 +1,14 @@
 // app/ranking/page.tsx
 import { Suspense } from 'react';
-import { getPlayersAction } from '../lib/actions';
+import { fetchPlayers } from '../lib/data';
 import { PlayerList } from '../ui/player-list/player-list';
 import Link from 'next/link';
 
+// Ranking HTML/RSC must not be treated as long-lived static shell while fetch is uncached.
+export const dynamic = 'force-dynamic';
+
 export default async function RankingPage() {
-  const players = await getPlayersAction();
+  const players = await fetchPlayers();
 
   return (
     <main className="min-h-screen p-8 bg-gray-50">
